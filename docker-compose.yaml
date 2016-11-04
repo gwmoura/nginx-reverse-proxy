@@ -1,0 +1,17 @@
+version: '2'
+services:
+  app1:
+    build: ./app1
+    ports:
+      - "8001:8000"
+  app2:
+    build: ./app2
+    ports:
+      - "8002:8000"
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./conf/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    network_mode: "host"
